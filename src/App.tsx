@@ -123,7 +123,6 @@ const Hero = ({ onOpenModal }: { onOpenModal: () => void }) => {
           src="https://images.unsplash.com/photo-1596423735880-5f2a689b903e?q=80&w=2940&auto=format&fit=crop"
           alt="Ancient Ruins of Ephesus"
           className="w-full h-full object-cover"
-          referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#1B2A4A]/80 via-[#1B2A4A]/60 to-[#1B2A4A]/90 mix-blend-multiply"></div>
       </div>
@@ -291,7 +290,6 @@ const Packages = ({ onOpenModal }: { onOpenModal: () => void }) => {
                     src={pkg.image} 
                     alt={pkg.title} 
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-                    referrerPolicy="no-referrer"
                   />
                   {pkg.highlight && (
                     <div className="absolute top-6 left-6 bg-[#D4AF37] text-[#1B2A4A] px-4 py-2 rounded-sm font-medium flex items-center gap-2 shadow-lg">
@@ -359,7 +357,6 @@ const About = () => {
           src="https://images.unsplash.com/photo-1548625361-ec8492004210?q=80&w=2940&auto=format&fit=crop" 
           alt="Texture" 
           className="w-full h-full object-cover"
-          referrerPolicy="no-referrer"
         />
       </div>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
@@ -391,10 +388,9 @@ const Footer = () => {
           <div>
             <div className="flex items-center mb-6">
               <img 
-                src="https://drive.google.com/uc?export=view&id=1vU3owWVLs1u4MN9dW_Cy6OQW0xly2P9C" 
+                src="/Holy-Mary-Tours-Website-DEV-/logo.png" 
                 alt="Holy Mary Tours Logo" 
                 className="h-16 object-contain"
-                referrerPolicy="no-referrer"
               />
             </div>
             <p className="font-light text-sm leading-relaxed max-w-xs">
@@ -449,10 +445,9 @@ export default function App() {
       <nav className="absolute top-0 left-0 right-0 z-50 px-6 py-6 flex justify-between items-center">
         <div className="flex items-center">
           <img 
-            src="https://drive.google.com/uc?export=view&id=1vU3owWVLs1u4MN9dW_Cy6OQW0xly2P9C" 
+            src="/Holy-Mary-Tours-Website-DEV-/logo.png" 
             alt="Holy Mary Tours Logo" 
             className="h-12 md:h-16 object-contain drop-shadow-lg"
-            referrerPolicy="no-referrer"
           />
         </div>
         <div className="hidden md:flex items-center gap-8 text-white/90 text-sm font-medium tracking-wide">
@@ -478,4 +473,3 @@ export default function App() {
     </div>
   );
 }
-
