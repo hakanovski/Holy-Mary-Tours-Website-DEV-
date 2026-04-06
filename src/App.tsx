@@ -24,38 +24,38 @@ const paulTour: TourData = {
   title: "Footsteps of Saint Paul",
   duration: "5 Days",
   price: "$2,899",
-  heroImage: "https://en.wikipedia.org/wiki/Special:FilePath/Celsus_Library%2C_Ephesus.jpg?width=1920",
+  heroImage: "https://images.unsplash.com/photo-1541450805268-4822a3a774ca?auto=format&fit=crop&w=1920&q=80",
   overview: "A profound spiritual journey to the heart of early Christianity. Walk the marble streets where St. Paul preached to the Ephesians. Experience the overwhelming peace of the House of the Virgin Mary (Meryem Ana Evi), where you can light a candle and pray in the very place she spent her final days. This is not just a tour; it is a deeply moving pilgrimage that connects you to the roots of your faith.",
   days: [
     {
       day: 1,
       title: "Arrival in Istanbul",
       description: "Welcome to Turkey! Upon your arrival at Istanbul Airport, you will be greeted by our VIP representative and transferred to your luxury hotel. Spend the evening resting and preparing your heart for the spiritual journey ahead. Enjoy a welcome dinner featuring exquisite Turkish cuisine.",
-      image: "https://en.wikipedia.org/wiki/Special:FilePath/Blue_Mosque_Courtyard_Dusk.jpg?width=1280",
+      image: "https://picsum.photos/seed/istanbul/1280/1080",
     },
     {
       day: 2,
       title: "The Splendors of Istanbul & Flight to Izmir",
       description: "Begin your day exploring the historical peninsula of Istanbul. Marvel at the architectural masterpiece of Hagia Sophia, once the largest cathedral in the world, taking in its breathtaking ancient mosaics. Visit the Blue Mosque, renowned for its stunning Iznik tiles, and explore the opulent Topkapi Palace. In the afternoon, wander through the vibrant Grand Bazaar before taking an evening flight to Izmir (ancient Smyrna).",
-      image: "https://en.wikipedia.org/wiki/Special:FilePath/Interior_of_Hagia_Sophia_in_Istanbul.jpg?width=1280",
+      image: "https://picsum.photos/seed/anatolia/1280/1080",
     },
     {
       day: 3,
       title: "Smyrna, Philadelphia, and Sardis",
       description: "Explore Izmir, the site of ancient Smyrna, one of the Seven Churches of Revelation. Continue to Philadelphia, the city of brotherly love, and then to Sardis, the capital of the ancient kingdom of Lydia. Walk through the impressive ruins of the Temple of Artemis and the ancient synagogue. Enjoy a scenic drive to Pamukkale for your overnight stay.",
-      image: "https://en.wikipedia.org/wiki/Special:FilePath/Sardis_Gymnasium_2007.jpg?width=1280",
+      image: "https://picsum.photos/seed/church/1280/1080",
     },
     {
       day: 4,
       title: "Hierapolis, Laodicea, and the Cotton Castle",
       description: "Start your day at the breathtaking white travertine terraces of Pamukkale (the 'Cotton Castle'). Explore the ancient city of Hierapolis, where the Apostle Philip was martyred. Next, visit Laodicea, the 'lukewarm' church mentioned in Revelation. Discover its ancient theaters, stadium, and aqueducts before driving to the coastal town of Kuşadası.",
-      image: "https://en.wikipedia.org/wiki/Special:FilePath/Pamukkale_00.JPG?width=1280",
+      image: "https://picsum.photos/seed/history/1280/1080",
     },
     {
       day: 5,
       title: "Ephesus and the House of the Virgin Mary",
       description: "A deeply moving day awaits as you explore Ephesus, the most well-preserved classical city in the Eastern Mediterranean. Walk the same marble streets as St. Paul and St. John. Stand in the Great Theater where Paul faced the silversmiths. Visit the tranquil House of the Virgin Mary (Meryem Ana Evi) on Mt. Koressos, a sacred site for both Christians and Muslims. Conclude your pilgrimage with a transfer to the airport for your departure.",
-      image: "https://en.wikipedia.org/wiki/Special:FilePath/House_of_the_Virgin_Mary_in_Ephesus.jpg?width=1280",
+      image: "https://picsum.photos/seed/ancient/1280/1080",
     }
   ]
 };
@@ -65,74 +65,74 @@ const revelationTour: TourData = {
   title: "The Seven Churches of Revelation",
   duration: "11 Days",
   price: "$5,499",
-  heroImage: "https://en.wikipedia.org/wiki/Special:FilePath/Hagia_Sophia_Deesis_mosaic.jpg?width=1920",
+  heroImage: "https://picsum.photos/seed/ruins/1920/1080",
   overview: "An expansive, 11-day expedition covering the Seven Churches of Revelation. Discover the historical context of the apocalyptic letters and witness the monumental scale of the Greco-Roman world that the early Christians navigated.",
   days: [
     {
       day: 1,
       title: "Arrival in Istanbul",
       description: "Welcome to the crossroads of Europe and Asia. Upon arrival at Istanbul Airport, you will be met by our representative and transferred to your luxury hotel. Relax and enjoy a welcome dinner as you prepare for this epic biblical journey.",
-      image: "https://en.wikipedia.org/wiki/Special:FilePath/Blue_Mosque_Courtyard_Dusk.jpg?width=1280",
+      image: "https://picsum.photos/seed/mosque/1280/1080",
     },
     {
       day: 2,
       title: "Istanbul's Christian Heritage & Flight to Adana",
       description: "Explore the Hippodrome, the Blue Mosque, and the magnificent Hagia Sophia, the pinnacle of Byzantine architecture. Visit the Topkapi Palace, the former residence of Ottoman Sultans. In the afternoon, take a flight to Adana, located in the heart of the Cilician plain.",
-      image: "https://en.wikipedia.org/wiki/Special:FilePath/Interior_of_Hagia_Sophia_in_Istanbul.jpg?width=1280",
+      image: "https://picsum.photos/seed/turkey/1280/1080",
     },
     {
       day: 3,
       title: "Antioch: Where They Were First Called Christians",
       description: "Drive to Antioch (modern Antakya), a pivotal city in early Christianity. Visit the Cave Church of St. Peter, widely considered one of the oldest Christian churches in the world, where St. Peter, St. Paul, and St. Barnabas preached. Explore the Hatay Archaeology Museum, home to a stunning collection of Roman mosaics.",
-      image: "https://en.wikipedia.org/wiki/Special:FilePath/Antakya_St_Peter_church_8284.jpg?width=1280",
+      image: "https://picsum.photos/seed/biblical/1280/1080",
     },
     {
       day: 4,
       title: "Tarsus, the Birthplace of St. Paul",
       description: "Travel to Tarsus, the birthplace of the Apostle Paul. Visit St. Paul's Well and the ancient Roman street. Reflect on the early life of Saul before his conversion. Enjoy a scenic coastal drive along the Mediterranean to the beautiful resort city of Alanya.",
-      image: "https://en.wikipedia.org/wiki/Special:FilePath/Tarsus_St_Paul_Well_0332.jpg?width=1280",
+      image: "https://picsum.photos/seed/paul/1280/1080",
     },
     {
       day: 5,
       title: "Aspendos, Perge, and Colossae",
       description: "Visit the incredibly well-preserved Roman theater of Aspendos. Continue to Perge, where St. Paul preached his first sermon in Pamphylia. Drive inland to the unexcavated mound of Colossae, the recipient of Paul's Epistle to the Colossians. Arrive in Pamukkale for dinner and overnight.",
-      image: "https://en.wikipedia.org/wiki/Special:FilePath/Aspendos_Theater.jpg?width=1280",
+      image: "https://picsum.photos/seed/mary/1280/1080",
     },
     {
       day: 6,
       title: "Hierapolis, Aphrodisias, and Laodicea",
       description: "Explore Hierapolis and the white terraces of Pamukkale. Visit the Martyrium of St. Philip. Drive to Aphrodisias, the city of the goddess of love, renowned for its sculpture school and well-preserved stadium. Conclude the day at Laodicea, the 'lukewarm' church of Revelation.",
-      image: "https://en.wikipedia.org/wiki/Special:FilePath/Laodicea_on_the_Lycus_-_Syrian_Street.jpg?width=1280",
+      image: "https://picsum.photos/seed/hagiasophia/1280/1080",
     },
     {
       day: 7,
       title: "Ephesus: The First Church of Revelation",
       description: "Spend the day in Ephesus, the most important of the Seven Churches. Visit the Basilica of St. John, believed to be the burial site of the Apostle. Explore the extensive ruins of Ephesus, including the Celsus Library and the Great Theater. Visit the Ephesus Archaeological Museum. Drive to Izmir for overnight.",
-      image: "https://en.wikipedia.org/wiki/Special:FilePath/Celsus_Library%2C_Ephesus.jpg?width=1280",
+      image: "https://picsum.photos/seed/pamukkale/1280/1080",
     },
     {
       day: 8,
       title: "Smyrna, Sardis, Philadelphia, and Thyatira",
       description: "Visit the ancient agora of Smyrna (Izmir), the persecuted church. Travel to Sardis, the 'dead' church, and explore its massive gymnasium and synagogue. Continue to Philadelphia, the church of 'brotherly love', and Thyatira, known for its trade guilds and the purple dye industry.",
-      image: "https://en.wikipedia.org/wiki/Special:FilePath/Sardis_Gymnasium_2007.jpg?width=1280",
+      image: "https://picsum.photos/seed/smyrna/1280/1080",
     },
     {
       day: 9,
       title: "Pergamum and Alexandria Troas",
       description: "Drive to Pergamum, described in Revelation as the place 'where Satan's throne is'. Take a cable car to the Acropolis to see the steepest theater in the ancient world and the foundations of the Altar of Zeus. Visit the Asclepion, an ancient healing center. Continue to Alexandria Troas, where Paul received the Macedonian call. Overnight in Çanakkale.",
-      image: "https://en.wikipedia.org/wiki/Special:FilePath/Pergamon_Theater.jpg?width=1280",
+      image: "https://picsum.photos/seed/ephesus/1280/1080",
     },
     {
       day: 10,
       title: "Troy and Return to Istanbul",
       description: "Visit the legendary city of Troy, immortalized by Homer's Iliad. See the replica of the Trojan Horse and explore the nine layers of the ancient city. Cross the Dardanelles strait by ferry, reflecting on the historical significance of this waterway. Drive back to Istanbul for a farewell dinner.",
-      image: "https://en.wikipedia.org/wiki/Special:FilePath/Trojan_Horse_replica_in_Troy.jpg?width=1280",
+      image: "https://picsum.photos/seed/istanbul/1280/1080",
     },
     {
       day: 11,
       title: "Departure",
       description: "After breakfast, enjoy some final moments in Istanbul before your private VIP transfer to the airport for your journey home, carrying with you memories of a lifetime and a renewed spirit.",
-      image: "https://en.wikipedia.org/wiki/Special:FilePath/Hagia_Sophia_Mars_2013.jpg?width=1280",
+      image: "https://picsum.photos/seed/anatolia/1280/1080",
     }
   ]
 };
@@ -299,10 +299,10 @@ const ContactModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => voi
 
 const Hero = ({ onOpenModal }: { onOpenModal: () => void }) => {
   const backgrounds = [
-    "https://en.wikipedia.org/wiki/Special:FilePath/Interior_of_Hagia_Sophia_in_Istanbul.jpg?width=1920",
-    "https://en.wikipedia.org/wiki/Special:FilePath/Celsus_Library%2C_Ephesus.jpg?width=1920",
-    "https://en.wikipedia.org/wiki/Special:FilePath/House_of_the_Virgin_Mary_in_Ephesus.jpg?width=1920",
-    "https://en.wikipedia.org/wiki/Special:FilePath/Hagia_Sophia_Deesis_mosaic.jpg?width=1920"
+    "https://picsum.photos/seed/church/1920/1080",
+    "https://picsum.photos/seed/history/1920/1080",
+    "https://picsum.photos/seed/ancient/1920/1080",
+    "https://picsum.photos/seed/ruins/1920/1080"
   ];
   
   const [bgImage, setBgImage] = useState(backgrounds[0]);
@@ -340,7 +340,7 @@ const Hero = ({ onOpenModal }: { onOpenModal: () => void }) => {
             <span className="italic text-[#EAE6DF]">Apostles Walked.</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-200 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
-            Holy Mary Tours bridges the gap between your local community and the legendary biblical sites of Asia Minor. We don't just organize trips; we curate profound spiritual awakenings. Walk the marble streets of Ephesus where St. Paul preached, feel the divine peace at the House of the Virgin Mary, and stand in awe beneath the ancient mosaics of Hagia Sophia. This is your exclusive invitation to experience the roots of your faith through a lens of unparalleled luxury and local Turkish expertise.
+            Holy Mary Tours bridges the gap between your local community and the legendary biblical sites of Turkey and Anatolia. We don't just organize trips; we curate profound spiritual awakenings. Walk the marble streets of Ephesus where St. Paul preached, feel the divine peace at the House of the Virgin Mary in Kuşadası, explore the beautiful Aegean coast, and stand in awe beneath the ancient mosaics of Hagia Sophia in Istanbul. This is your exclusive invitation to experience the roots of your faith through a lens of unparalleled luxury and local Turkish expertise.
           </p>
           <motion.button 
             onClick={() => {
@@ -517,7 +517,7 @@ const Packages = ({ onOpenModal, onViewTour }: { onOpenModal: () => void, onView
         "Day 4: Pamukkale thermal pools, ancient Hierapolis, and Laodicea. Drive to Kuşadası.",
         "Day 5: Extensive tour of Ephesus ruins, House of the Virgin Mary, Magnesian Gate, and St. Paul's paths. Departure."
       ],
-      image: "https://en.wikipedia.org/wiki/Special:FilePath/Celsus_Library%2C_Ephesus.jpg?width=1280",
+      image: "https://images.unsplash.com/photo-1541450805268-4822a3a774ca?auto=format&fit=crop&w=1200&q=80",
       highlight: true
     },
     {
@@ -540,7 +540,7 @@ const Packages = ({ onOpenModal, onViewTour }: { onOpenModal: () => void, onView
         "Day 10: Troy, Dardanelles, Istanbul.",
         "Day 11: Private transfer to airport for departure."
       ],
-      image: "https://en.wikipedia.org/wiki/Special:FilePath/Ephesos_amphitheatre.jpg?width=1280",
+      image: "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5f1?auto=format&fit=crop&w=1200&q=80",
       highlight: false
     }
   ];
@@ -678,7 +678,7 @@ const Footer = () => {
               <Logo />
             </div>
             <p className="font-light text-sm leading-relaxed max-w-xs mb-8">
-              Exclusive, all-inclusive luxury Christian pilgrimages to the Biblical sites of Asia Minor.
+              Exclusive, all-inclusive luxury Christian pilgrimages to the Biblical sites of Turkey, including Istanbul, Ephesus, and the heart of Anatolia.
             </p>
             {/* Social Media Icons */}
             <div className="flex items-center gap-5">
@@ -768,10 +768,10 @@ export default function App() {
 
   const renderView = () => {
     if (currentView === 'tour-paul') {
-      return <TourDetail tour={paulTour} onBack={() => setCurrentView('home')} onOpenModal={() => setIsModalOpen(true)} />;
+      return <TourDetail tour={paulTour} onBack={() => { setCurrentView('home'); setTimeout(() => document.getElementById('packages')?.scrollIntoView({ behavior: 'smooth' }), 50); }} onOpenModal={() => setIsModalOpen(true)} />;
     }
     if (currentView === 'tour-revelation') {
-      return <TourDetail tour={revelationTour} onBack={() => setCurrentView('home')} onOpenModal={() => setIsModalOpen(true)} />;
+      return <TourDetail tour={revelationTour} onBack={() => { setCurrentView('home'); setTimeout(() => document.getElementById('packages')?.scrollIntoView({ behavior: 'smooth' }), 50); }} onOpenModal={() => setIsModalOpen(true)} />;
     }
     return (
       <>
