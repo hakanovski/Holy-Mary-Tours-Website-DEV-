@@ -2,6 +2,141 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Plane, Star, BookOpen, MapPin, CheckCircle, ChevronRight, Mail, Phone, Map, X, Heart, Sun, Cross, Crown, Flame, Facebook, Instagram, Linkedin } from 'lucide-react';
 
+type TourDay = {
+  day: number;
+  title: string;
+  description: string;
+  image?: string;
+};
+
+type TourData = {
+  id: 'tour-paul' | 'tour-revelation';
+  title: string;
+  duration: string;
+  price: string;
+  heroImage: string;
+  overview: string;
+  days: TourDay[];
+};
+
+const paulTour: TourData = {
+  id: 'tour-paul',
+  title: "Footsteps of Saint Paul",
+  duration: "5 Days",
+  price: "$2,899",
+  heroImage: "https://en.wikipedia.org/wiki/Special:FilePath/Celsus_Library%2C_Ephesus.jpg?width=1920",
+  overview: "A profound spiritual journey to the heart of early Christianity. Walk the marble streets where St. Paul preached to the Ephesians. Experience the overwhelming peace of the House of the Virgin Mary (Meryem Ana Evi), where you can light a candle and pray in the very place she spent her final days. This is not just a tour; it is a deeply moving pilgrimage that connects you to the roots of your faith.",
+  days: [
+    {
+      day: 1,
+      title: "Arrival in Istanbul",
+      description: "Welcome to Turkey! Upon your arrival at Istanbul Airport, you will be greeted by our VIP representative and transferred to your luxury hotel. Spend the evening resting and preparing your heart for the spiritual journey ahead. Enjoy a welcome dinner featuring exquisite Turkish cuisine.",
+      image: "https://en.wikipedia.org/wiki/Special:FilePath/Blue_Mosque_Courtyard_Dusk.jpg?width=1280",
+    },
+    {
+      day: 2,
+      title: "The Splendors of Istanbul & Flight to Izmir",
+      description: "Begin your day exploring the historical peninsula of Istanbul. Marvel at the architectural masterpiece of Hagia Sophia, once the largest cathedral in the world, taking in its breathtaking ancient mosaics. Visit the Blue Mosque, renowned for its stunning Iznik tiles, and explore the opulent Topkapi Palace. In the afternoon, wander through the vibrant Grand Bazaar before taking an evening flight to Izmir (ancient Smyrna).",
+      image: "https://en.wikipedia.org/wiki/Special:FilePath/Interior_of_Hagia_Sophia_in_Istanbul.jpg?width=1280",
+    },
+    {
+      day: 3,
+      title: "Smyrna, Philadelphia, and Sardis",
+      description: "Explore Izmir, the site of ancient Smyrna, one of the Seven Churches of Revelation. Continue to Philadelphia, the city of brotherly love, and then to Sardis, the capital of the ancient kingdom of Lydia. Walk through the impressive ruins of the Temple of Artemis and the ancient synagogue. Enjoy a scenic drive to Pamukkale for your overnight stay.",
+      image: "https://en.wikipedia.org/wiki/Special:FilePath/Sardis_Gymnasium_2007.jpg?width=1280",
+    },
+    {
+      day: 4,
+      title: "Hierapolis, Laodicea, and the Cotton Castle",
+      description: "Start your day at the breathtaking white travertine terraces of Pamukkale (the 'Cotton Castle'). Explore the ancient city of Hierapolis, where the Apostle Philip was martyred. Next, visit Laodicea, the 'lukewarm' church mentioned in Revelation. Discover its ancient theaters, stadium, and aqueducts before driving to the coastal town of Kuşadası.",
+      image: "https://en.wikipedia.org/wiki/Special:FilePath/Pamukkale_00.JPG?width=1280",
+    },
+    {
+      day: 5,
+      title: "Ephesus and the House of the Virgin Mary",
+      description: "A deeply moving day awaits as you explore Ephesus, the most well-preserved classical city in the Eastern Mediterranean. Walk the same marble streets as St. Paul and St. John. Stand in the Great Theater where Paul faced the silversmiths. Visit the tranquil House of the Virgin Mary (Meryem Ana Evi) on Mt. Koressos, a sacred site for both Christians and Muslims. Conclude your pilgrimage with a transfer to the airport for your departure.",
+      image: "https://en.wikipedia.org/wiki/Special:FilePath/House_of_the_Virgin_Mary_in_Ephesus.jpg?width=1280",
+    }
+  ]
+};
+
+const revelationTour: TourData = {
+  id: 'tour-revelation',
+  title: "The Seven Churches of Revelation",
+  duration: "11 Days",
+  price: "$5,499",
+  heroImage: "https://en.wikipedia.org/wiki/Special:FilePath/Hagia_Sophia_Deesis_mosaic.jpg?width=1920",
+  overview: "An expansive, 11-day expedition covering the Seven Churches of Revelation. Discover the historical context of the apocalyptic letters and witness the monumental scale of the Greco-Roman world that the early Christians navigated.",
+  days: [
+    {
+      day: 1,
+      title: "Arrival in Istanbul",
+      description: "Welcome to the crossroads of Europe and Asia. Upon arrival at Istanbul Airport, you will be met by our representative and transferred to your luxury hotel. Relax and enjoy a welcome dinner as you prepare for this epic biblical journey.",
+      image: "https://en.wikipedia.org/wiki/Special:FilePath/Blue_Mosque_Courtyard_Dusk.jpg?width=1280",
+    },
+    {
+      day: 2,
+      title: "Istanbul's Christian Heritage & Flight to Adana",
+      description: "Explore the Hippodrome, the Blue Mosque, and the magnificent Hagia Sophia, the pinnacle of Byzantine architecture. Visit the Topkapi Palace, the former residence of Ottoman Sultans. In the afternoon, take a flight to Adana, located in the heart of the Cilician plain.",
+      image: "https://en.wikipedia.org/wiki/Special:FilePath/Interior_of_Hagia_Sophia_in_Istanbul.jpg?width=1280",
+    },
+    {
+      day: 3,
+      title: "Antioch: Where They Were First Called Christians",
+      description: "Drive to Antioch (modern Antakya), a pivotal city in early Christianity. Visit the Cave Church of St. Peter, widely considered one of the oldest Christian churches in the world, where St. Peter, St. Paul, and St. Barnabas preached. Explore the Hatay Archaeology Museum, home to a stunning collection of Roman mosaics.",
+      image: "https://en.wikipedia.org/wiki/Special:FilePath/Antakya_St_Peter_church_8284.jpg?width=1280",
+    },
+    {
+      day: 4,
+      title: "Tarsus, the Birthplace of St. Paul",
+      description: "Travel to Tarsus, the birthplace of the Apostle Paul. Visit St. Paul's Well and the ancient Roman street. Reflect on the early life of Saul before his conversion. Enjoy a scenic coastal drive along the Mediterranean to the beautiful resort city of Alanya.",
+      image: "https://en.wikipedia.org/wiki/Special:FilePath/Tarsus_St_Paul_Well_0332.jpg?width=1280",
+    },
+    {
+      day: 5,
+      title: "Aspendos, Perge, and Colossae",
+      description: "Visit the incredibly well-preserved Roman theater of Aspendos. Continue to Perge, where St. Paul preached his first sermon in Pamphylia. Drive inland to the unexcavated mound of Colossae, the recipient of Paul's Epistle to the Colossians. Arrive in Pamukkale for dinner and overnight.",
+      image: "https://en.wikipedia.org/wiki/Special:FilePath/Aspendos_Theater.jpg?width=1280",
+    },
+    {
+      day: 6,
+      title: "Hierapolis, Aphrodisias, and Laodicea",
+      description: "Explore Hierapolis and the white terraces of Pamukkale. Visit the Martyrium of St. Philip. Drive to Aphrodisias, the city of the goddess of love, renowned for its sculpture school and well-preserved stadium. Conclude the day at Laodicea, the 'lukewarm' church of Revelation.",
+      image: "https://en.wikipedia.org/wiki/Special:FilePath/Laodicea_on_the_Lycus_-_Syrian_Street.jpg?width=1280",
+    },
+    {
+      day: 7,
+      title: "Ephesus: The First Church of Revelation",
+      description: "Spend the day in Ephesus, the most important of the Seven Churches. Visit the Basilica of St. John, believed to be the burial site of the Apostle. Explore the extensive ruins of Ephesus, including the Celsus Library and the Great Theater. Visit the Ephesus Archaeological Museum. Drive to Izmir for overnight.",
+      image: "https://en.wikipedia.org/wiki/Special:FilePath/Celsus_Library%2C_Ephesus.jpg?width=1280",
+    },
+    {
+      day: 8,
+      title: "Smyrna, Sardis, Philadelphia, and Thyatira",
+      description: "Visit the ancient agora of Smyrna (Izmir), the persecuted church. Travel to Sardis, the 'dead' church, and explore its massive gymnasium and synagogue. Continue to Philadelphia, the church of 'brotherly love', and Thyatira, known for its trade guilds and the purple dye industry.",
+      image: "https://en.wikipedia.org/wiki/Special:FilePath/Sardis_Gymnasium_2007.jpg?width=1280",
+    },
+    {
+      day: 9,
+      title: "Pergamum and Alexandria Troas",
+      description: "Drive to Pergamum, described in Revelation as the place 'where Satan's throne is'. Take a cable car to the Acropolis to see the steepest theater in the ancient world and the foundations of the Altar of Zeus. Visit the Asclepion, an ancient healing center. Continue to Alexandria Troas, where Paul received the Macedonian call. Overnight in Çanakkale.",
+      image: "https://en.wikipedia.org/wiki/Special:FilePath/Pergamon_Theater.jpg?width=1280",
+    },
+    {
+      day: 10,
+      title: "Troy and Return to Istanbul",
+      description: "Visit the legendary city of Troy, immortalized by Homer's Iliad. See the replica of the Trojan Horse and explore the nine layers of the ancient city. Cross the Dardanelles strait by ferry, reflecting on the historical significance of this waterway. Drive back to Istanbul for a farewell dinner.",
+      image: "https://en.wikipedia.org/wiki/Special:FilePath/Trojan_Horse_replica_in_Troy.jpg?width=1280",
+    },
+    {
+      day: 11,
+      title: "Departure",
+      description: "After breakfast, enjoy some final moments in Istanbul before your private VIP transfer to the airport for your journey home, carrying with you memories of a lifetime and a renewed spirit.",
+      image: "https://en.wikipedia.org/wiki/Special:FilePath/Hagia_Sophia_Mars_2013.jpg?width=1280",
+    }
+  ]
+};
+
 const Logo = ({ className = "" }: { className?: string }) => (
   <div className={`flex items-center gap-4 md:gap-5 ${className}`}>
     <div className="relative flex items-center justify-center w-12 h-12 md:w-16 md:h-16">
@@ -30,6 +165,7 @@ const Logo = ({ className = "" }: { className?: string }) => (
 
 const ContactModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Prevent scrolling when modal is open
   useEffect(() => {
@@ -38,15 +174,38 @@ const ContactModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => voi
     return () => { document.body.style.overflow = 'unset'; };
   }, [isOpen]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // In a real app, this would send an API request to a backend service (like Formspree or Resend)
-    // to send the email to hakanyorganci@gmail.com
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      onClose();
-    }, 4000);
+    setIsSubmitting(true);
+    
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      // IMPORTANT: Replace 'YOUR_FORMSPREE_ENDPOINT' with your actual Formspree ID (e.g., 'xabcdefg')
+      const response = await fetch("https://formspree.io/f/mgoprabq", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        form.reset();
+        setTimeout(() => {
+          setIsSubmitted(false);
+          onClose();
+        }, 4000);
+      } else {
+        alert("Oops! There was a problem submitting your form. Please make sure you have configured your Formspree endpoint.");
+      }
+    } catch (error) {
+      alert("Oops! There was a network error submitting your form.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -96,37 +255,37 @@ const ContactModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => voi
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-[#1B2A4A] mb-2">First Name *</label>
-                      <input required type="text" className="w-full border border-gray-300 rounded-sm px-4 py-3 focus:outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] transition-all" placeholder="John" />
+                      <input required type="text" name="firstName" className="w-full border border-gray-300 rounded-sm px-4 py-3 focus:outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] transition-all" placeholder="John" />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-[#1B2A4A] mb-2">Last Name *</label>
-                      <input required type="text" className="w-full border border-gray-300 rounded-sm px-4 py-3 focus:outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] transition-all" placeholder="Doe" />
+                      <input required type="text" name="lastName" className="w-full border border-gray-300 rounded-sm px-4 py-3 focus:outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] transition-all" placeholder="Doe" />
                     </div>
                   </div>
                   
                   <div>
                     <label className="block text-sm font-medium text-[#1B2A4A] mb-2">Email Address *</label>
-                    <input required type="email" className="w-full border border-gray-300 rounded-sm px-4 py-3 focus:outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] transition-all" placeholder="john@example.com" />
+                    <input required type="email" name="email" className="w-full border border-gray-300 rounded-sm px-4 py-3 focus:outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] transition-all" placeholder="john@example.com" />
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-[#1B2A4A] mb-2">Phone Number <span className="text-gray-400 font-light">(Optional)</span></label>
-                      <input type="tel" className="w-full border border-gray-300 rounded-sm px-4 py-3 focus:outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] transition-all" placeholder="+1 (555) 000-0000" />
+                      <input type="tel" name="phone" className="w-full border border-gray-300 rounded-sm px-4 py-3 focus:outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] transition-all" placeholder="+1 (555) 000-0000" />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-[#1B2A4A] mb-2">Address <span className="text-gray-400 font-light">(Optional)</span></label>
-                      <input type="text" className="w-full border border-gray-300 rounded-sm px-4 py-3 focus:outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] transition-all" placeholder="City, State" />
+                      <input type="text" name="address" className="w-full border border-gray-300 rounded-sm px-4 py-3 focus:outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] transition-all" placeholder="City, State" />
                     </div>
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium text-[#1B2A4A] mb-2">Your Message *</label>
-                    <textarea required rows={4} className="w-full border border-gray-300 rounded-sm px-4 py-3 focus:outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] transition-all resize-none" placeholder="Tell us about your church group or your desired travel dates..."></textarea>
+                    <textarea required rows={4} name="message" className="w-full border border-gray-300 rounded-sm px-4 py-3 focus:outline-none focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] transition-all resize-none" placeholder="Tell us about your church group or your desired travel dates..."></textarea>
                   </div>
 
-                  <button type="submit" className="w-full bg-[#D4AF37] text-[#1B2A4A] font-medium text-lg py-4 rounded-sm hover:bg-[#C5A059] transition-colors">
-                    Send Message
+                  <button type="submit" disabled={isSubmitting} className="w-full bg-[#D4AF37] text-[#1B2A4A] font-medium text-lg py-4 rounded-sm hover:bg-[#C5A059] transition-colors disabled:opacity-70 disabled:cursor-not-allowed">
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </button>
                 </form>
               )}
@@ -139,19 +298,34 @@ const ContactModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => voi
 };
 
 const Hero = ({ onOpenModal }: { onOpenModal: () => void }) => {
+  const backgrounds = [
+    "https://en.wikipedia.org/wiki/Special:FilePath/Interior_of_Hagia_Sophia_in_Istanbul.jpg?width=1920",
+    "https://en.wikipedia.org/wiki/Special:FilePath/Celsus_Library%2C_Ephesus.jpg?width=1920",
+    "https://en.wikipedia.org/wiki/Special:FilePath/House_of_the_Virgin_Mary_in_Ephesus.jpg?width=1920",
+    "https://en.wikipedia.org/wiki/Special:FilePath/Hagia_Sophia_Deesis_mosaic.jpg?width=1920"
+  ];
+  
+  const [bgImage, setBgImage] = useState(backgrounds[0]);
+
+  useEffect(() => {
+    const randomBg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+    setBgImage(randomBg);
+  }, []);
+
   return (
     <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0 z-0">
         <motion.img
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
+          key={bgImage}
+          initial={{ scale: 1.1, opacity: 0.8 }}
+          animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 20, ease: "easeOut" }}
-          src="https://images.unsplash.com/photo-1596423735880-5f2a689b903e?q=80&w=2940&auto=format&fit=crop"
-          alt="Ancient Ruins of Ephesus"
+          src={bgImage}
+          alt="Historical Biblical Site in Turkey"
           className="w-full h-full object-cover"
           referrerPolicy="no-referrer"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1B2A4A]/80 via-[#1B2A4A]/60 to-[#1B2A4A]/90 mix-blend-multiply"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1B2A4A]/90 via-[#1B2A4A]/70 to-[#1B2A4A]/95 mix-blend-multiply"></div>
       </div>
       
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto mt-20">
@@ -160,13 +334,13 @@ const Hero = ({ onOpenModal }: { onOpenModal: () => void }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
         >
-          <h2 className="text-[#D4AF37] tracking-[0.2em] uppercase text-sm md:text-base font-semibold mb-6">Holy Mary Tours</h2>
-          <h1 className="text-5xl md:text-7xl font-serif text-white leading-tight mb-6 drop-shadow-lg">
+          <h2 className="text-[#D4AF37] tracking-[0.2em] uppercase text-sm md:text-base font-semibold mb-6">From the Heart of Texas to the Cradle of Christianity</h2>
+          <h1 className="text-5xl md:text-7xl font-serif text-white leading-tight mb-8 drop-shadow-lg">
             Walk Where the <br className="hidden md:block" />
             <span className="italic text-[#EAE6DF]">Apostles Walked.</span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
-            Exclusive, all-inclusive luxury Christian pilgrimages to the Biblical sites of Asia Minor. Direct from Texas.
+          <p className="text-lg md:text-xl text-gray-200 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
+            Holy Mary Tours bridges the gap between your local community and the legendary biblical sites of Asia Minor. We don't just organize trips; we curate profound spiritual awakenings. Walk the marble streets of Ephesus where St. Paul preached, feel the divine peace at the House of the Virgin Mary, and stand in awe beneath the ancient mosaics of Hagia Sophia. This is your exclusive invitation to experience the roots of your faith through a lens of unparalleled luxury and local Turkish expertise.
           </p>
           <motion.button 
             onClick={() => {
@@ -188,18 +362,23 @@ const Experience = () => {
   const features = [
     {
       icon: <Plane className="w-8 h-8 text-[#D4AF37]" />,
-      title: "Direct from Texas",
-      description: "Seamless roundtrip flight bookings directly from DFW (Dallas/Fort Worth). We handle every detail so your pilgrimage begins the moment you leave home."
+      title: "Seamless Texas Departures",
+      description: "Your pilgrimage begins the moment you leave home. We handle every detail, offering direct flight coordination from DFW, pre-flight community briefings in McKinney, and a dedicated local liaison to ensure your journey is stress-free before you even board."
     },
     {
       icon: <Star className="w-8 h-8 text-[#D4AF37]" />,
-      title: "White-Glove Logistics",
-      description: "5-Star Luxury Accommodations (Sea-view guaranteed), all premium meals including upscale marina dining, and VIP Transport in Private Mercedes-Benz Sprinter vans."
+      title: "Uncompromising 5-Star Luxury",
+      description: "Experience the lands of the Bible without sacrificing comfort. We guarantee sea-view rooms in premium Aegean resorts, historic luxury accommodations in Istanbul, and VIP transport in private, climate-controlled Mercedes-Benz Sprinter vans."
     },
     {
       icon: <BookOpen className="w-8 h-8 text-[#D4AF37]" />,
-      title: "Biblical Scholars",
-      description: "Guided by experts who bring the scriptures to life, including exclusive skip-the-line access to historical ruins and private moments for prayer and reflection."
+      title: "Expert Biblical Guidance",
+      description: "Our guides are more than just locals; they are passionate scholars of early Christianity. They bring the Book of Revelation and the Acts of the Apostles to life, providing deep historical context amidst the ruins of the Seven Churches."
+    },
+    {
+      icon: <Cross className="w-8 h-8 text-[#D4AF37]" />,
+      title: "Exclusive & Sacred Access",
+      description: "Enjoy skip-the-line privileges at major archaeological sites and carefully curated private moments for prayer and reflection at sacred locations like the House of the Virgin Mary, ensuring a deeply personal spiritual experience."
     }
   ];
 
@@ -218,21 +397,21 @@ const Experience = () => {
           <div className="w-24 h-1 bg-[#D4AF37] mx-auto"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           {features.map((feature, index) => (
             <motion.div 
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
+              transition={{ delay: index * 0.15 }}
               className="bg-white p-10 rounded-sm shadow-xl shadow-black/5 border border-gray-100 text-center group hover:-translate-y-2 transition-transform duration-500"
             >
               <div className="w-16 h-16 mx-auto bg-[#1B2A4A]/5 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#1B2A4A] group-hover:text-white transition-colors duration-500">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-serif text-[#1B2A4A] mb-4">{feature.title}</h3>
-              <p className="text-gray-600 leading-relaxed font-light">
+              <h3 className="text-2xl font-serif text-[#1B2A4A] mb-4">{feature.title}</h3>
+              <p className="text-gray-600 leading-relaxed font-light text-lg">
                 {feature.description}
               </p>
             </motion.div>
@@ -243,10 +422,90 @@ const Experience = () => {
   );
 };
 
-const Packages = ({ onOpenModal }: { onOpenModal: () => void }) => {
+const TourDetail = ({ tour, onBack, onOpenModal }: { tour: TourData, onBack: () => void, onOpenModal: () => void }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-[#F5F5F0] pt-24 pb-16">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <button 
+          onClick={onBack}
+          className="flex items-center gap-2 text-[#1B2A4A] hover:text-[#D4AF37] transition-colors mb-8 font-medium"
+        >
+          <ChevronRight className="w-5 h-5 rotate-180" /> Back to Tours
+        </button>
+
+        <div className="bg-white rounded-sm shadow-2xl overflow-hidden">
+          <div className="h-[40vh] md:h-[50vh] relative">
+            <img src={tour.heroImage} alt={tour.title} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1B2A4A]/90 to-transparent flex items-end p-8 md:p-12">
+              <div>
+                <div className="flex items-center gap-4 mb-4">
+                  <span className="bg-[#D4AF37] text-[#1B2A4A] px-3 py-1 text-sm font-medium rounded-sm uppercase tracking-wider">{tour.duration}</span>
+                  <span className="text-white font-serif text-xl">{tour.price} <span className="text-sm font-sans font-light text-gray-300">/ person</span></span>
+                </div>
+                <h1 className="text-4xl md:text-6xl font-serif text-white mb-4">{tour.title}</h1>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-8 md:p-12">
+            <div className="mb-12">
+              <h2 className="text-2xl font-serif text-[#1B2A4A] mb-4">Journey Overview</h2>
+              <p className="text-gray-600 leading-relaxed text-lg font-light">{tour.overview}</p>
+            </div>
+
+            <div className="space-y-12">
+              <h2 className="text-3xl font-serif text-[#1B2A4A] mb-8 border-b border-gray-200 pb-4">Detailed Itinerary</h2>
+              
+              {tour.days.map((day, index) => (
+                <div key={index} className="flex flex-col md:flex-row gap-8 items-start group">
+                  <div className="md:w-1/3 shrink-0">
+                    <div className="sticky top-24">
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className="w-12 h-12 bg-[#1B2A4A] text-[#D4AF37] flex items-center justify-center rounded-full font-serif text-xl shadow-lg">
+                          {day.day}
+                        </div>
+                        <h3 className="text-xl font-serif text-[#1B2A4A]">{day.title}</h3>
+                      </div>
+                      <p className="text-gray-600 font-light leading-relaxed mb-6">{day.description}</p>
+                    </div>
+                  </div>
+                  
+                  <div className="md:w-2/3 w-full space-y-6">
+                    {day.image && (
+                      <div className="rounded-sm overflow-hidden shadow-lg aspect-video bg-gray-100">
+                        <img src={day.image} alt={day.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" referrerPolicy="no-referrer" />
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-16 text-center border-t border-gray-200 pt-12">
+              <h3 className="text-2xl font-serif text-[#1B2A4A] mb-6">Ready to Walk in the Footsteps of the Apostles?</h3>
+              <button 
+                onClick={onOpenModal}
+                className="bg-[#D4AF37] text-[#1B2A4A] px-10 py-4 rounded-sm font-medium tracking-wide hover:bg-[#C5A059] transition-colors duration-300 text-lg shadow-xl"
+              >
+                Book This Pilgrimage
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Packages = ({ onOpenModal, onViewTour }: { onOpenModal: () => void, onViewTour: (id: 'tour-paul' | 'tour-revelation') => void }) => {
   const packages = [
     {
-      title: "The Ephesus Pilgrimage",
+      id: 'tour-paul' as const,
+      title: "Footsteps of Saint Paul",
       price: "$2,899",
       duration: "5 Days",
       accommodations: "Korumar Ephesus Beach & Spa Resort (Kuşadası - 5 Star Premium)",
@@ -258,11 +517,12 @@ const Packages = ({ onOpenModal }: { onOpenModal: () => void }) => {
         "Day 4: Pamukkale thermal pools, ancient Hierapolis, and Laodicea. Drive to Kuşadası.",
         "Day 5: Extensive tour of Ephesus ruins, House of the Virgin Mary, Magnesian Gate, and St. Paul's paths. Departure."
       ],
-      image: "https://upload.wikimedia.org/wikipedia/commons/a/ad/Celsus_Library%2C_Ephesus.jpg",
+      image: "https://en.wikipedia.org/wiki/Special:FilePath/Celsus_Library%2C_Ephesus.jpg?width=1280",
       highlight: true
     },
     {
-      title: "The Revelation Journey",
+      id: 'tour-revelation' as const,
+      title: "The Seven Churches of Revelation",
       price: "$5,499",
       duration: "11 Days",
       accommodations: "DoubleTree by Hilton (Istanbul) & Charisma De Luxe Hotel (Kuşadası - 5 Star Premium)",
@@ -280,7 +540,7 @@ const Packages = ({ onOpenModal }: { onOpenModal: () => void }) => {
         "Day 10: Troy, Dardanelles, Istanbul.",
         "Day 11: Private transfer to airport for departure."
       ],
-      image: "https://upload.wikimedia.org/wikipedia/commons/c/cb/Ephesos_amphitheatre.jpg",
+      image: "https://en.wikipedia.org/wiki/Special:FilePath/Ephesos_amphitheatre.jpg?width=1280",
       highlight: false
     }
   ];
@@ -363,10 +623,10 @@ const Packages = ({ onOpenModal }: { onOpenModal: () => void }) => {
                 </div>
                 
                 <button 
-                  onClick={onOpenModal}
+                  onClick={() => onViewTour(pkg.id)}
                   className="mt-10 flex items-center gap-2 text-[#1B2A4A] font-medium hover:text-[#D4AF37] transition-colors group"
                 >
-                  Request Full Brochure <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  Read More <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </motion.div>
@@ -493,15 +753,42 @@ const Footer = () => {
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentView, setCurrentView] = useState<'home' | 'tour-paul' | 'tour-revelation'>('home');
 
   const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    if (currentView !== 'home') {
+      setCurrentView('home');
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const renderView = () => {
+    if (currentView === 'tour-paul') {
+      return <TourDetail tour={paulTour} onBack={() => setCurrentView('home')} onOpenModal={() => setIsModalOpen(true)} />;
+    }
+    if (currentView === 'tour-revelation') {
+      return <TourDetail tour={revelationTour} onBack={() => setCurrentView('home')} onOpenModal={() => setIsModalOpen(true)} />;
+    }
+    return (
+      <>
+        <Hero onOpenModal={() => setIsModalOpen(true)} />
+        <Experience />
+        <Packages onOpenModal={() => setIsModalOpen(true)} onViewTour={(id) => setCurrentView(id)} />
+        <About />
+      </>
+    );
   };
 
   return (
     <div className="min-h-screen bg-[#F5F5F0] font-sans selection:bg-[#D4AF37] selection:text-[#1B2A4A]">
       <nav className="absolute top-0 left-0 right-0 z-50 px-6 py-6 flex justify-between items-center bg-gradient-to-b from-[#0A1128]/90 via-[#0A1128]/40 to-transparent">
-        <Logo className="hover:opacity-90 transition-opacity cursor-pointer" />
+        <div onClick={() => setCurrentView('home')}>
+          <Logo className="hover:opacity-90 transition-opacity cursor-pointer" />
+        </div>
         <div className="hidden md:flex items-center gap-8 text-[#EAE6DF] text-xs md:text-sm font-light tracking-[0.15em] uppercase">
           <button onClick={() => scrollToSection('experience')} className="hover:text-[#F3E5AB] transition-colors">The Experience</button>
           <button onClick={() => scrollToSection('packages')} className="hover:text-[#F3E5AB] transition-colors">Biblical Tours</button>
@@ -515,10 +802,8 @@ export default function App() {
         </div>
       </nav>
 
-      <Hero onOpenModal={() => setIsModalOpen(true)} />
-      <Experience />
-      <Packages onOpenModal={() => setIsModalOpen(true)} />
-      <About />
+      {renderView()}
+      
       <Footer />
 
       <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
