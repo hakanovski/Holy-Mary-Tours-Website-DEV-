@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Plane, Star, BookOpen, MapPin, CheckCircle, ChevronRight, Mail, Phone, Map, X, Heart, Sun, Compass, Anchor, Crown } from 'lucide-react';
+import { Plane, Star, BookOpen, MapPin, CheckCircle, ChevronRight, Mail, Phone, Map, X, Heart, Sun, Cross, Crown, Flame, Facebook, Instagram, Linkedin } from 'lucide-react';
 
 const Logo = ({ className = "" }: { className?: string }) => (
   <div className={`flex items-center gap-4 md:gap-5 ${className}`}>
     <div className="relative flex items-center justify-center w-12 h-12 md:w-16 md:h-16">
-      {/* Outer esoteric glow/sun (Divine Presence) */}
-      <Sun className="absolute w-full h-full text-[#D4AF37] opacity-30 animate-[spin_40s_linear_infinite]" strokeWidth={1} />
-      {/* Inner compass (Tourism / Navigation / The Aegean) */}
-      <Compass className="absolute w-[75%] h-[75%] text-[#D4AF37] opacity-70" strokeWidth={1} />
-      {/* Center Anchor (Early Christian symbol of Hope/Christ & the Sea) */}
-      <Anchor className="absolute w-[45%] h-[45%] text-[#D4AF37]" strokeWidth={1.5} />
-      {/* Crown (Mary, Queen of Heaven) */}
-      <Crown className="absolute w-[25%] h-[25%] text-[#F3E5AB] -mt-[50%]" strokeWidth={2} />
+      {/* Outer Divine Halo (Spinning slowly) */}
+      <Sun className="absolute w-full h-full text-[#D4AF37] opacity-25 animate-[spin_40s_linear_infinite]" strokeWidth={0.5} />
+      
+      {/* Crown of Mary (Queen of Heaven) */}
+      <Crown className="absolute w-[55%] h-[55%] text-[#D4AF37] mt-3" strokeWidth={1.5} />
+      
+      {/* The Cross of Christ */}
+      <Cross className="absolute w-[35%] h-[35%] text-[#F3E5AB] -mt-4" strokeWidth={2} />
+      
+      {/* Star of Bethlehem / Divine Guidance */}
+      <Star className="absolute w-[15%] h-[15%] text-[#FFFFFF] -mt-10 opacity-90 animate-pulse" strokeWidth={2} fill="#FFFFFF" />
     </div>
     <div className="flex flex-col justify-center">
       <span className="font-sans font-light text-2xl md:text-3xl tracking-[0.25em] bg-gradient-to-r from-[#FFFFFF] via-[#F3E5AB] to-[#D4AF37] bg-clip-text text-transparent uppercase leading-none drop-shadow-sm">
@@ -292,7 +295,7 @@ const Packages = ({ onOpenModal }: { onOpenModal: () => void }) => {
             viewport={{ once: true }}
             className="text-3xl md:text-5xl font-serif text-[#1B2A4A] mb-4"
           >
-            Our Signature Packages
+            Our Biblical Tours
           </motion.h2>
           <p className="text-gray-500 max-w-2xl mx-auto font-light text-lg">
             Immersive, all-inclusive journeys designed for profound spiritual enrichment and absolute comfort.
@@ -377,14 +380,10 @@ const Packages = ({ onOpenModal }: { onOpenModal: () => void }) => {
 const About = () => {
   return (
     <section id="about" className="py-24 bg-[#1B2A4A] text-white relative overflow-hidden">
-      <div className="absolute inset-0 opacity-10">
-        <img 
-          src="https://images.unsplash.com/photo-1548625361-ec8492004210?q=80&w=2940&auto=format&fit=crop" 
-          alt="Texture" 
-          className="w-full h-full object-cover"
-          referrerPolicy="no-referrer"
-        />
-      </div>
+      {/* Pure CSS Background - No images to break! */}
+      <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#D4AF37]/15 via-transparent to-transparent"></div>
+      <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '48px 48px', opacity: 0.03 }}></div>
+      
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -394,11 +393,14 @@ const About = () => {
         >
           <h2 className="text-3xl md:text-5xl font-serif mb-8 text-[#D4AF37]">Texas Heart. Turkish Expertise.</h2>
           <div className="w-16 h-px bg-white/30 mx-auto mb-8"></div>
-          <p className="text-lg md:text-xl font-light leading-relaxed text-gray-300 mb-8">
-            We are based right here in Texas. Founded by Hakan & Ece, Holy Mary Tours bridges the heart of the American church with the ancient roots of Christianity. 
+          <p className="text-lg md:text-xl font-light leading-relaxed text-gray-300 mb-6">
+            We are Ece and Hakan Yorgancı, a married couple and long-time residents of McKinney, Texas. We are deeply rooted in our local Christian community, blessed with wonderful friendships and a shared faith.
+          </p>
+          <p className="text-lg md:text-xl font-light leading-relaxed text-gray-300 mb-6">
+            Originally from the heart of the Aegean, our mission is to introduce our friends and community to the sacred lands where Jesus and Mary walked. We believe in learning, traveling, and sharing these profound experiences together—enriching our souls and having fun along the way.
           </p>
           <p className="text-lg md:text-xl font-light leading-relaxed text-gray-300">
-            While we manage your flawless booking and pre-flight experience from the US, your ground operations, security, and logistics in Turkey are flawlessly executed by our dedicated 40-year partner, <span className="text-white font-medium">Azim Tours</span>. Your pilgrimage is safe, luxurious, and spiritually profound.
+            While we personally manage your flawless booking and pre-flight experience from Texas, your ground operations and logistics in Turkey are flawlessly executed by our dedicated 40-year partner, <a href="https://www.azimtours.com/" target="_blank" rel="noopener noreferrer" className="text-[#D4AF37] font-medium hover:text-white transition-colors underline underline-offset-4 decoration-[#D4AF37]/40">Azim Tours</a>.
           </p>
         </motion.div>
       </div>
@@ -410,14 +412,31 @@ const Footer = () => {
   return (
     <footer id="contact" className="bg-[#0A1128] text-gray-400 py-16 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 border-b border-white/10 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           <div>
             <div className="flex items-center mb-6">
               <Logo />
             </div>
-            <p className="font-light text-sm leading-relaxed max-w-xs">
+            <p className="font-light text-sm leading-relaxed max-w-xs mb-8">
               Exclusive, all-inclusive luxury Christian pilgrimages to the Biblical sites of Asia Minor.
             </p>
+            {/* Social Media Icons */}
+            <div className="flex items-center gap-5">
+              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#D4AF37] hover:text-[#0A1128] transition-all duration-300">
+                <Facebook className="w-4 h-4" />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#D4AF37] hover:text-[#0A1128] transition-all duration-300">
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#D4AF37] hover:text-[#0A1128] transition-all duration-300">
+                <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current" aria-hidden="true">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.008 3.974H5.078z" />
+                </svg>
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-[#D4AF37] hover:text-[#0A1128] transition-all duration-300">
+                <Linkedin className="w-4 h-4" />
+              </a>
+            </div>
           </div>
           
           <div>
@@ -446,9 +465,26 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="flex flex-col md:flex-row justify-between items-center text-xs font-light">
-          <p>&copy; {new Date().getFullYear()} Holy Mary Tours. All rights reserved.</p>
-          <p className="mt-2 md:mt-0">Operated in partnership with Azim Tours (Est. 1975)</p>
+        <div className="pt-8 border-t border-white/10 flex flex-col lg:flex-row justify-between items-center gap-6">
+          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6 text-xs font-light text-center md:text-left">
+            <p>&copy; {new Date().getFullYear()} Holy Mary Tours. All rights reserved.</p>
+            <p className="hidden md:block text-white/20">|</p>
+            <p>Operated in partnership with <a href="https://www.azimtours.com/" target="_blank" rel="noopener noreferrer" className="text-[#D4AF37] hover:text-white transition-colors font-medium">Azim Tours</a> (Est. 1975)</p>
+          </div>
+          
+          {/* MIELA Labs Credit */}
+          <div className="text-xs font-light flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full border border-white/10 hover:border-[#D4AF37]/50 transition-colors duration-300">
+            <span className="text-gray-500">Designed & Engineered by</span>
+            <a 
+              href="https://www.mielalabs.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="font-medium text-white hover:text-[#D4AF37] transition-all duration-300 tracking-wider flex items-center gap-1 group"
+            >
+              MIELA LABS
+              <ChevronRight className="w-3 h-3 opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
+            </a>
+          </div>
         </div>
       </div>
     </footer>
@@ -468,7 +504,7 @@ export default function App() {
         <Logo className="hover:opacity-90 transition-opacity cursor-pointer" />
         <div className="hidden md:flex items-center gap-8 text-[#EAE6DF] text-xs md:text-sm font-light tracking-[0.15em] uppercase">
           <button onClick={() => scrollToSection('experience')} className="hover:text-[#F3E5AB] transition-colors">The Experience</button>
-          <button onClick={() => scrollToSection('packages')} className="hover:text-[#F3E5AB] transition-colors">Packages</button>
+          <button onClick={() => scrollToSection('packages')} className="hover:text-[#F3E5AB] transition-colors">Biblical Tours</button>
           <button onClick={() => scrollToSection('about')} className="hover:text-[#F3E5AB] transition-colors">About Us</button>
           <button 
             onClick={() => setIsModalOpen(true)}
