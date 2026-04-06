@@ -1,6 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Plane, Star, BookOpen, MapPin, CheckCircle, ChevronRight, Mail, Phone, Map, X, Heart } from 'lucide-react';
+import { Plane, Star, BookOpen, MapPin, CheckCircle, ChevronRight, Mail, Phone, Map, X, Heart, Sun, Compass, Anchor, Crown } from 'lucide-react';
+
+const Logo = ({ className = "" }: { className?: string }) => (
+  <div className={`flex items-center gap-4 md:gap-5 ${className}`}>
+    <div className="relative flex items-center justify-center w-12 h-12 md:w-16 md:h-16">
+      {/* Outer esoteric glow/sun (Divine Presence) */}
+      <Sun className="absolute w-full h-full text-[#D4AF37] opacity-30 animate-[spin_40s_linear_infinite]" strokeWidth={1} />
+      {/* Inner compass (Tourism / Navigation / The Aegean) */}
+      <Compass className="absolute w-[75%] h-[75%] text-[#D4AF37] opacity-70" strokeWidth={1} />
+      {/* Center Anchor (Early Christian symbol of Hope/Christ & the Sea) */}
+      <Anchor className="absolute w-[45%] h-[45%] text-[#D4AF37]" strokeWidth={1.5} />
+      {/* Crown (Mary, Queen of Heaven) */}
+      <Crown className="absolute w-[25%] h-[25%] text-[#F3E5AB] -mt-[50%]" strokeWidth={2} />
+    </div>
+    <div className="flex flex-col justify-center">
+      <span className="font-sans font-light text-2xl md:text-3xl tracking-[0.25em] bg-gradient-to-r from-[#FFFFFF] via-[#F3E5AB] to-[#D4AF37] bg-clip-text text-transparent uppercase leading-none drop-shadow-sm">
+        Holy Mary
+      </span>
+      <span className="font-sans font-medium text-[0.65rem] md:text-[0.75rem] tracking-[0.6em] text-[#D4AF37] uppercase mt-2 ml-1 opacity-90">
+        Tours
+      </span>
+    </div>
+  </div>
+);
 
 const ContactModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -123,6 +146,7 @@ const Hero = ({ onOpenModal }: { onOpenModal: () => void }) => {
           src="https://images.unsplash.com/photo-1596423735880-5f2a689b903e?q=80&w=2940&auto=format&fit=crop"
           alt="Ancient Ruins of Ephesus"
           className="w-full h-full object-cover"
+          referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#1B2A4A]/80 via-[#1B2A4A]/60 to-[#1B2A4A]/90 mix-blend-multiply"></div>
       </div>
@@ -290,6 +314,7 @@ const Packages = ({ onOpenModal }: { onOpenModal: () => void }) => {
                     src={pkg.image} 
                     alt={pkg.title} 
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                    referrerPolicy="no-referrer"
                   />
                   {pkg.highlight && (
                     <div className="absolute top-6 left-6 bg-[#D4AF37] text-[#1B2A4A] px-4 py-2 rounded-sm font-medium flex items-center gap-2 shadow-lg">
@@ -357,6 +382,7 @@ const About = () => {
           src="https://images.unsplash.com/photo-1548625361-ec8492004210?q=80&w=2940&auto=format&fit=crop" 
           alt="Texture" 
           className="w-full h-full object-cover"
+          referrerPolicy="no-referrer"
         />
       </div>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
@@ -387,11 +413,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12 border-b border-white/10 pb-12">
           <div>
             <div className="flex items-center mb-6">
-              <img 
-                src="/Holy-Mary-Tours-Website-DEV-/logo.png" 
-                alt="Holy Mary Tours Logo" 
-                className="h-16 object-contain"
-              />
+              <Logo />
             </div>
             <p className="font-light text-sm leading-relaxed max-w-xs">
               Exclusive, all-inclusive luxury Christian pilgrimages to the Biblical sites of Asia Minor.
@@ -442,21 +464,15 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#F5F5F0] font-sans selection:bg-[#D4AF37] selection:text-[#1B2A4A]">
-      <nav className="absolute top-0 left-0 right-0 z-50 px-6 py-6 flex justify-between items-center">
-        <div className="flex items-center">
-          <img 
-            src="/Holy-Mary-Tours-Website-DEV-/logo.png" 
-            alt="Holy Mary Tours Logo" 
-            className="h-12 md:h-16 object-contain drop-shadow-lg"
-          />
-        </div>
-        <div className="hidden md:flex items-center gap-8 text-white/90 text-sm font-medium tracking-wide">
-          <button onClick={() => scrollToSection('experience')} className="hover:text-[#D4AF37] transition-colors drop-shadow-md">The Experience</button>
-          <button onClick={() => scrollToSection('packages')} className="hover:text-[#D4AF37] transition-colors drop-shadow-md">Packages</button>
-          <button onClick={() => scrollToSection('about')} className="hover:text-[#D4AF37] transition-colors drop-shadow-md">About Us</button>
+      <nav className="absolute top-0 left-0 right-0 z-50 px-6 py-6 flex justify-between items-center bg-gradient-to-b from-[#0A1128]/90 via-[#0A1128]/40 to-transparent">
+        <Logo className="hover:opacity-90 transition-opacity cursor-pointer" />
+        <div className="hidden md:flex items-center gap-8 text-[#EAE6DF] text-xs md:text-sm font-light tracking-[0.15em] uppercase">
+          <button onClick={() => scrollToSection('experience')} className="hover:text-[#F3E5AB] transition-colors">The Experience</button>
+          <button onClick={() => scrollToSection('packages')} className="hover:text-[#F3E5AB] transition-colors">Packages</button>
+          <button onClick={() => scrollToSection('about')} className="hover:text-[#F3E5AB] transition-colors">About Us</button>
           <button 
             onClick={() => setIsModalOpen(true)}
-            className="border border-[#D4AF37] text-[#D4AF37] px-5 py-2 rounded-sm hover:bg-[#D4AF37] hover:text-[#1B2A4A] transition-all bg-[#1B2A4A]/30 backdrop-blur-sm"
+            className="border border-[#D4AF37]/50 text-[#F3E5AB] px-6 py-2.5 rounded-sm hover:bg-[#D4AF37] hover:text-[#0A1128] transition-all duration-300 bg-[#0A1128]/40 backdrop-blur-md"
           >
             Book Consultation
           </button>
@@ -473,3 +489,4 @@ export default function App() {
     </div>
   );
 }
+
